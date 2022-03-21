@@ -1,0 +1,15 @@
+.switchContainer {
+    /* Home page */
+    /* position: relative; */
+    width: 100vmax;
+    height: 100vmax;
+
+    background: #DAC1C1;
+}
+
+.dashboardLayout {
+    width: 100%;
+    height: 100%;
+
+    background: #DAC1C1;
+}
