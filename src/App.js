@@ -178,9 +178,10 @@ function App() {
 						<Route path='/menu' render={props => <DashboardLayout data={myState} {...props}/>}/>
 						<Route path='/editProfile' render={props => <DashboardLayout {...props}/>}/>
 						<Route path='/checkout' render={props => <DashboardLayout {...props}/>}/>
+						<Route path='/confirmOrder' render={props => <DashboardLayout {...props}/>}/>
 						{/* <Route children={props=><Footer {...props}/>}/> */}
 						{/* <Route children={props=><Navbar {...props}/>}/> */}
-						</Switch>           
+					</Switch>           
 				</Router>
 			</itemContext.Provider>
 		</div>

@@ -16,13 +16,12 @@ function HomeInfoCardContainer() {
 
     return (
         <div className="infoCardContainer d-flex flex-wrap justify-content-center align-items-center bd-grey">
-            <Link to="/menu" >
-                <HomeInfoCard infoImg="https://cdn.pixabay.com/photo/2018/03/07/18/42/menu-3206749_960_720.jpg" infoTitle="Order your favourite food" infoLink="Check the Menu"/>
-            </Link>
             <Link to="#">
                 <HomeInfoCard infoImg="https://images.squarespace-cdn.com/content/v1/56e33390b6aa60415bb5ff39/1477050412477-Q6ZG3W3JNFQZPFC4CHIP/Hours-Location-ICONS.jpg" 
-                infoTitle=" 119 Wan Chai Rd, Wan Chai" infoLink={`All days
-                11:30AM - 9:00PM`}/>
+                infoTitle=" 119 Wan Chai Rd, Wan Chai" infoLink={`All days 11:30AM - 9:00PM`}/>
+            </Link>
+            <Link to="/menu" >
+                <HomeInfoCard infoImg="https://cdn.pixabay.com/photo/2018/03/07/18/42/menu-3206749_960_720.jpg" infoTitle="Order your favourite food" infoLink="Check the Menu"/>
             </Link>
             {store.get('loggedin')===true && orderedList !== [] ? (
             <Link to="/checkout">
@@ -30,8 +29,7 @@ function HomeInfoCardContainer() {
                 infoTitle="Check out" infoLink='GO'/>
             </Link>
             ):(
-                <HomeInfoCard infoImg="https://images.squarespace-cdn.com/content/v1/56e33390b6aa60415bb5ff39/1477050412477-Q6ZG3W3JNFQZPFC4CHIP/Hours-Location-ICONS.jpg" 
-                infoTitle="Check out" infoLink='GO'/>
+                <div/>
             )}
         </div>
     )

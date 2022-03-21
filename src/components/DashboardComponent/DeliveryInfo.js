@@ -8,7 +8,7 @@ function DeliveryInfo() {
     const iL = useContext(itemContext);
     const {loggedIn} = iL.state;
     const getUserDetails = store.get('user');
-    const getItems = store.get('orderedItems');
+    const getItems = store.get('orderedItems') ?? [];
     const totalCost = store.get('totalCost')?? 0;
 
 	const orderid = getUserDetails.accountID + "01";
@@ -38,7 +38,11 @@ function DeliveryInfo() {
 	console.log('delivery info login status: '+loggedIn);
 
     return (
-		<div className="deliveryInfo d-flex flex-column">
+		<div className="deliveryInfo d-flex flex-column">{
+			console.log('getItems: ' + getItems)
+		}
+			{/* <h4 className="delTitle text-primary fw-400 text-center d-flex justify-content-center">{ getItems !== [] ? 
+	"Thanks For Your Order. We will reach you soon with your delicious food" : "Your Cart is Empty..!!"}</h4> */}
 			<div className="beforeh2"></div> 
 			{getUserDetails && getItems.length>0 ?
 			(<div className="summaryBill d-flex flex-column">
@@ -128,5 +132,3 @@ function DeliveryInfo() {
 }
 
 export default DeliveryInfo
-{/* <h4 className="delTitle text-primary fw-400 text-center d-flex justify-content-center">{  loggedIn ? 
-	"Thanks For Your Order. We will reach you soon with your delicious food" : "Your Cart is Empty..!!"}</h4> */}

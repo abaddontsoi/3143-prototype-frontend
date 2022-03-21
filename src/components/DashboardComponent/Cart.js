@@ -43,7 +43,7 @@ function Cart() {
         store.set('loggedin', true)
     }
     const authorize=()=>{
-        return  loggedIn ? history.push('/checkout') : history.push('/login');
+        return  loggedIn ? history.push('/confirmOrder') : history.push('/login');
     }
     return (
         <>

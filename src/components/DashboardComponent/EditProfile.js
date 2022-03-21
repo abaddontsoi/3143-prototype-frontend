@@ -9,14 +9,15 @@ function EditProfile() {
     
     // const memberId = store.get('user').id;
     // console.log(memberId)
-
+    const userData = store.get('user')??[];
     const [edituser, setEditUser] = useState(
         {
-            accountID:store.get('user').accountID,
-            pwd:store.get('user').pwd,
-            email: store.get('user').email,
-            customerName:store.get('user').customerName,
-            address:store.get('user').address,
+            accountID:userData.accountID,
+            pwd:userData.pwd,
+            email: userData.email,
+            customerName:userData.customerName,
+            phone: userData.phone,
+            address: userData.address,
         }
     )
 
@@ -43,6 +44,7 @@ function EditProfile() {
         .then(res =>{
             if (res.data === "Success") {
                 console.log('Edit ok');
+                store.set('user', edituser);
             }else{
                 console.log('Edit failed')
                 console.log(res.data)
@@ -66,6 +68,9 @@ function EditProfile() {
                             </div>
                             <div className="form-group py-2"> 
                                 <input type="password" name="pwd" placeholder="Password" className="form-control" value={edituser.pwd} onChange={editMe} required/>
+                            </div>
+                            <div className="form-group py-2"> 
+                                <input type="phone" name="phone" placeholder="phone" className="form-control" value={edituser.phone} onChange={editMe} required/>
                             </div>
                             <div className="form-group py-2">        
                                 <textarea type="text" name="address" placeholder="Address" className="form-control" value={edituser.address} onChange={editMe} required/>

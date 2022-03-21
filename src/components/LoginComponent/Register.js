@@ -9,6 +9,7 @@ function Register() {
         pwd:"",
         email: "",
         customerName:"",
+        phone:"",
         address:"",
     })
     const [msg,setMsg] = useState('');
@@ -16,7 +17,7 @@ function Register() {
     useEffect(()=>{
         //console.log("register rendered");
         if(msg.includes("Success")){
-            setTimeout(()=>{ history.push('/login');setMsg(''); },1000);            
+            setTimeout(()=>{ history.push('/login');setMsg(''); },3000);            
         }
     },[msg,history])
     
@@ -35,8 +36,8 @@ function Register() {
         //api post to server
         axios.post('/signMeUp', user)
         .then(res =>{
-            setMsg("Registered Successfully");
-            //redirect to login page
+            console.log(res.data);
+            setMsg(res.data);
         })
         .catch((e)=>{
             setMsg("Something went wrong. Please try again later");
@@ -50,7 +51,7 @@ function Register() {
                 <div className="form-group">
                     <div className="form-group">
                         <label htmlFor="account" className="form-label m-2 h5">Account name</label>
-                        <input type="account" name="accountID" placeholder="Email" className="form-control" value={user.accountID} onChange={changeMe} required/>
+                        <input type="account" name="accountID" placeholder="account" className="form-control" value={user.accountID} onChange={changeMe} required/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="password" className="form-label m-2 h5">Password</label>
@@ -63,6 +64,10 @@ function Register() {
                     <div className="form-group">
                         <label htmlFor="name" className="form-label m-2 h5">Your Name</label>
                         <input type="name" name="customerName" placeholder="name" className="form-control" value={user.customerName} onChange={changeMe} required/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="phone" className="form-label m-2 h5">Your Phone Number</label>
+                        <input type="phone" name="phone" placeholder="phone" className="form-control" value={user.phone} onChange={changeMe} required/>
                     </div>
                     <label htmlFor="address" className="form-label m-2 h5">Address</label>
                     <textarea type="text" name="address" placeholder="Address" className="form-control" value={user.addr} onChange={changeMe} required/>

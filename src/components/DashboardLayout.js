@@ -6,6 +6,7 @@ import Home from './DashboardComponent/Home'
 import Menu from './DashboardComponent/Menu'
 import EditProfile from './DashboardComponent/EditProfile'
 import CheckOut from './DashboardComponent/CheckOut';
+import OrderConfirm from './DashboardComponent/OrderConfirm';
 
 import '../css/dashboardLayout.css'
 
@@ -20,12 +21,21 @@ function DashboardLayout(props) {
 					<Route 
 						exact path={`${matchPath}`} 
 						render={(props) => (matchPath === "/" ? 
-						(<Home {...props} />) : 
-						(matchPath ==="/menu" ? 
-						(<Menu {...props} />) : 
-						(matchPath ==="/checkout" ? 
-						(<CheckOut {...props} />) : 
-						(<EditProfile {...props} />))))}/>
+							(<Home {...props} />) : 
+							(matchPath ==="/menu" ? 
+								(<Menu {...props} />) : 
+								(matchPath ==="/checkout" ? 
+									(<CheckOut {...props} />) : 
+									(matchPath ==="/confirmOrder"?
+										<OrderConfirm {...props}/>:
+										<EditProfile {...props} />
+									)
+									// (
+									// 	<EditProfile {...props}/>
+									// )
+								)
+							)
+						)}/>
 				</Switch>
 			</div>
 			<Footer/>
